@@ -2,10 +2,9 @@ name: Daily Stock Analysis
 
 on:
   schedule:
-    - cron: '30 21 * * *'  # 日本時間 毎朝06:30
+    - cron: '30 21 * * *'
   workflow_dispatch:
 
-# GitHub Pages への書き込み権限を付与
 permissions:
   contents: write
 
@@ -32,7 +31,6 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python main.py
 
-      # 生成された index.html をリポジトリに保存（自動プッシュ）
       - name: Commit and Push Updated Report
         run: |
           git config --global user.name "github-actions[bot]"
